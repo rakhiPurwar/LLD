@@ -10,21 +10,24 @@
 
 
 class Car{
-    String color;
+    String color;  //instance variable
     String model;
     int year;
 
-    public Car(String color, String model, int year){
+    Car(String color, String model, int year){
         this.color = color;
         this.model = model;
         this.year = year;
     }
 
+    String drive(){   //instance method
+        return "Drive Safely";
+    }
 }
 
 public class ClassesAndObjects{
     public static void main(String[] args) {
-        Car car1 = new Car("Red", "Toyota Camry", 2020);
+        Car car1 = new Car("Red", "Toyota Camry", 2020); //reference variable car1
         Car car2 = new Car("Blue", "Honda Accord", 2019);
 
         System.out.println("Car 1: " + car1.color + ", " + car1.model + ", " + car1.year);

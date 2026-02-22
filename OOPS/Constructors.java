@@ -7,12 +7,12 @@
 6. Leverage private constructors for Singleton patterns or utility classes.
 
  */
-class Animal{
+class Animals{
     String name;
     int age;
 
     // constructor
-    public Animal(String name, int age){
+    public Animals(String name, int age){
         this.name = name;
         this.age = age;
     }
@@ -22,11 +22,11 @@ class Animal{
     }
 }
 
-class Dog extends Animal {
+class Dogs extends Animals {
     String breed;
 
     // constructor
-    public Dog(String name, int age, String breed){
+    public Dogs(String name, int age, String breed){
         super(name, age);
         this.breed = breed;
     }
@@ -40,7 +40,7 @@ class Dog extends Animal {
 
 public class Constructors {
     public static void main(String args[]){
-        Dog dog = new Dog("Buddy", 3, "Golden Retriever");
+        Dogs dog = new Dogs("Buddy", 3, "Golden Retriever");
         dog.display();
     }
 }
