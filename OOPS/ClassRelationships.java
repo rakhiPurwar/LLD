@@ -127,7 +127,7 @@ public class ClassRelationships {
         Course course = new Course(professor);
 
         // Dependency
-        FactoryMethod.ReportGenerator reportGenerator = new FactoryMethod.ReportGenerator();
+        ReportGenerator reportGenerator = new ReportGenerator();
         reportGenerator.generateReport(student);
 
         // Display
