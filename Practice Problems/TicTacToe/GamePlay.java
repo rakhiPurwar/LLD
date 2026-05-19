@@ -1,22 +1,20 @@
 import java.util.Random;
 
 public class GamePlay {
+    int size;
     Board board;
     Player player1;
     Player player2;
 
-    public GamePlay(Board board, Player player1, Player player2) {
-        this.board = board;
-        this.player1 = player1;
-        this.player2 = player2;
-
+    public GamePlay(int size ) {
+        this.size = size;
+        initialiseGame(size);
     }
 
-    private static GamePlay initialiseGame() {
-        Board board = new Board(3, new char[3][3]);
-        Player player1 = new Player(Piece.X, "Player 1");
-        Player player2 = new Player(Piece.O, "Player 2");
-        return new GamePlay(board, player1, player2);
+    public void initialiseGame(int size) {
+        this.board = new Board(size, new char[3][3]);
+        this.player1 = new Player(Piece.X, "Player 1");
+        this.player2  = new Player(Piece.O, "Player 2");
 
     }
     boolean checkWinner(Player player){
@@ -83,15 +81,6 @@ public class GamePlay {
                     ? gamePlay.player2
                     : gamePlay.player1;
         }
-    }
-
-    public static void main(String args[]){
-        System.out.println("Welcome to Tic Tac Toe!");
-        GamePlay gamePlay = GamePlay.initialiseGame();
-
-        GamePlay.startPlaying(gamePlay);
-
-
     }
 }
 

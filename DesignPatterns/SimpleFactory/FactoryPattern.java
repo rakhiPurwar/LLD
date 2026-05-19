@@ -3,7 +3,7 @@ package SimpleFactory;
 provides an interface for creating objects, but lets subclasses or a separate method decide which class to instantiate.
 public void send(String type) {
     if(type.equals("EMAIL")) {
-        SimpleFactory.EmailNotification email = new SimpleFactory.EmailNotification();
+        SimpleFactory.EmailNotificationChannel email = new SimpleFactory.EmailNotificationChannel();
         email.send();
     }
     else if(type.equals("SMS")) {

@@ -14,18 +14,20 @@ import ParkingLot.services.ParkingLotService;
 import java.util.List;
 
 public class DemoApplication {
+    public static void main(String args[]){
+
     ParkingSpot spot1 = new ParkingSpot("000", VehicleType.CAR);
     ParkingSpot spot2 = new ParkingSpot("001", VehicleType.BIKE);
     ParkingSpot spot3 = new ParkingSpot("002", VehicleType.TRUCK);
 
     ParkingSpot spot4 = new ParkingSpot("003", VehicleType.BIKE);
 
-    ParkingFloor groundFloor = new ParkingFloor("Ground", List.of(spot1,spot2));
-    ParkingFloor firstFloor = new ParkingFloor("First", List.of(spot3,spot4));
+    ParkingFloor groundFloor = new ParkingFloor("Ground", List.of(spot1, spot2));
+    ParkingFloor firstFloor = new ParkingFloor("First", List.of(spot3, spot4));
 
     PricingStrategy strategy = new HourlyPricingStrategy();
 
-    ParkingLotService parkingLotService = new ParkingLotService(List.of(groundFloor,firstFloor),strategy);
+    ParkingLotService parkingLotService = new ParkingLotService(List.of(groundFloor, firstFloor), strategy);
     ParkingLotApplication application = new ParkingLotApplication(parkingLotService);
 
     Vehicle bike = new Bike("ABC00");
@@ -34,6 +36,7 @@ public class DemoApplication {
     Ticket ticket1 = application.parkVehicle(car);
 
     Ticket ticket2 = application.parkVehicle(bike);
+}
 
 
 

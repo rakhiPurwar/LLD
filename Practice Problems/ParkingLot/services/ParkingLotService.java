@@ -55,7 +55,7 @@ public class ParkingLotService {
   another thread can remove the ticket
   between the two calls. The fix is using remove() alone and checking if it returns null — that's one atomic
   operation with no gap."
-  also it may happen that card and bike both are making entry at same,or one entry another exit,
+  also it may happen that cad and bike both are making entry at same,or one entry another exit,
   so we have to modify hashmap at same time which is not possible
   any kind of modifications or writes in a multithreaded system must be accompanied by thread safety
      */
@@ -75,7 +75,7 @@ public class ParkingLotService {
         Ticket ticket = new Ticket(spot);
         Ticket existing = activeTickets.putIfAbsent(ticket.getTicketId(),ticket);
         if (existing != null) {
-            parkVehicle(vehicle);
+            parkVehicle(vehicle); //retry
         }
 
         return ticket;
