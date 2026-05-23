@@ -84,17 +84,17 @@ class FactoryPattern {
 /*
 Before:
 
-Client handled object creation.
+ClientApplication handled object creation.
 
 After:
 
-Client only:
+ClientApplication only:
 
 Asks factory
 
 Uses interface
 
-Client DOES NOT know:
+ClientApplication DOES NOT know:
 
 Which class is created
 

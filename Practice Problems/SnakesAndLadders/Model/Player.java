@@ -1,12 +1,12 @@
-package SnakesAndLadders;
+package SnakesAndLadders.Model;
 
 public class Player {
+
+    private final String playerName;
+    int currPos;
+
     public String getPlayerName() {
         return playerName;
-    }
-
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
     }
 
     public int getCurrPos() {
@@ -21,7 +21,4 @@ public class Player {
         this.playerName = playerName;
         this.currPos = currPos;
     }
-
-    String playerName;
-    int  currPos;
 }

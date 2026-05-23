@@ -1,19 +1,25 @@
-package SnakesAndLadders;
+package SnakesAndLadders.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class Board {
 
-    List<Jump> snakes;
-    List<Jump>ladders;
-    int hurdles;
+    private final int size;
+    private final List<Jump> snakes;
+    private final List<Jump>ladders;
+    private final int hurdles;
 
+    public int getSize() {
+        return size;
+    }
 
-    public Board( List<Jump> snakes, List<Jump> ladders,int hurdles) {
-        this.snakes = snakes;
-        this.ladders = ladders;
+    public Board(int hurdles, int size) {
+        this.snakes =  new ArrayList<>();
+        this.ladders = new ArrayList<>();
         this.hurdles = hurdles;
+        this.size = size;
         initialiseBoard();
     }
 
@@ -47,32 +53,46 @@ public class Board {
         }
 
         for(Jump snake: snakes){
-            System.out.println("Snake from "+ snake.start + " to "+ snake.end);
+            System.out.println("Snake from "+ snake.getStart() + " to "+ snake.getEnd());
         }
         for(Jump ladder: ladders) {
-            System.out.println("ladder from "+ ladder.start + " to "+ ladder.end);
+            System.out.println("ladder from "+ ladder.getStart()+ " to "+ ladder.getEnd());
 
         }
 
 
     }
 
-    private boolean valid(List<Jump> snakes, List<Jump> ladders, int start, int end) {
-        if(start == end) return false;
-        //no same start and end
+    public void checkHurdles(Player player1, Board board){
         for(Jump snake: snakes){
-            if(snake.start == start || snake.end == end || snake.start ==end || snake.end == start){
+            if(snake.getStart() == player1.currPos){
+                System.out.println("snake bite"+player1.getPlayerName() +" "+ player1.currPos);
+                player1.currPos = snake.getEnd();
+            }
+
+        }
+        for(Jump ladder: board.ladders){
+            if(ladder.getStart()== player1.currPos){
+                System.out.println("Ladder up"+player1.getPlayerName() +" "+ player1.currPos);
+                player1.currPos = ladder.getEnd();
+            }
+        }
+    }
+
+    private boolean valid(List<Jump> snakes, List<Jump> ladders, int start, int end) {
+        if(start == end ) return false;
+        //no same start and end()
+        for(Jump snake: snakes){
+            if(snake.getStart() == start || snake.getStart() == end|| snake.getEnd() == start || snake.getEnd() == end){
                 return false;
             }
         }
         for(Jump ladder: ladders){
-            if(ladder.start == start || ladder.end == end || ladder.start == end || ladder.end == start) {
+            if(ladder.getStart() == start || ladder.getEnd() == end || ladder.getEnd()== end || ladder.getEnd() == start) {
                 return false;
             }
         }
         return true;
     }
-
-
 
 }

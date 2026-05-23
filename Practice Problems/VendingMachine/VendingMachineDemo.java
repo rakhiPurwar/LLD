@@ -34,6 +34,9 @@ public class VendingMachineDemo {
 
         machine.selectItem(water);
         machine.cancel();
+        machine.getInventory().addItem(chips,10);
+        machine.getInventory().addItem(water,20);
+
 
         System.out.println("\n--- User Interaction --- cancel mid txn--");
         machine.insertCoin(Coin.FIFTY);

@@ -10,7 +10,7 @@ public class Inventory {
 
     public void addItem(Item item, int quantity){
         // merge — atomically adds quantity to existing value, or sets quantity if absent
-        stock.merge(item, quantity, Integer::sum);
+        stock.merge(item, quantity, Integer::sum); // atomic banane ke liye, lambda ke through currentQty ko quantity se add kar diya, agar item pehle se nahi tha to quantity set kar diya
     }
 
     public boolean isItemAvailable(Item item){
@@ -36,5 +36,9 @@ public class Inventory {
         System.out.println("---------");
 
     }
+
+    //merge and compute methods of ConcurrentHashMap are used to ensure thread safety when multiple threads are adding or deducting items from the inventory concurrently.
+    // They provide atomic operations that prevent race conditions and ensure data integrity without the need for external synchronization.
+
 
 }

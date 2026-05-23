@@ -1,8 +1,10 @@
+package Model;
+
 public enum Piece {
     X('X'),
     O('O');
 
-    private char value;
+    private final char value;
 
     Piece(char value){
         this.value = value;

@@ -25,7 +25,7 @@ We are creating a family of related objects
 
 We don’t directly use new WindowsButton()
 
-Client depends only on GUIFactory
+ClientApplication depends only on GUIFactory
 
 🔥 Interview Explanation
 

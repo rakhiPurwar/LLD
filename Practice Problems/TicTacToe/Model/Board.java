@@ -1,6 +1,16 @@
+package Model;
+
 public class Board {
-    int size;
-    char [][] board ;
+    final int size;
+    final char [][] board ;
+
+    public int getSize() {
+        return size;
+    }
+
+    public char[][] getBoard() {
+        return board;
+    }
 
     public Board(int size, char[][] board) {
         this.size = size;
@@ -41,7 +51,7 @@ public class Board {
 
     public boolean placePiece(Player currentPlayer, int row, int col) {
         if(board[row][col] == '.'){
-            board[row][col] = currentPlayer.piece.getValue();
+            board[row][col] = currentPlayer.getPiece().getValue();
             return true;
         }
         return false;

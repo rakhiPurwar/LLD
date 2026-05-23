@@ -13,7 +13,7 @@ import ParkingLot.services.ParkingLotService;
 
 import java.util.List;
 
-public class DemoApplication {
+public class ClientApplication {
     public static void main(String args[]){
 
     ParkingSpot spot1 = new ParkingSpot("000", VehicleType.CAR);

@@ -21,8 +21,8 @@ public class Item {
 
     @Override
     public boolean equals(Object obj){
-        if(obj == this) return true;
-        if(obj == null || getClass()!=obj.getClass() ) return false;
+        if(obj == this) return true;//mem location
+        if(obj == null || this.getClass()!=obj.getClass() ) return false;
         Item item = (Item) obj;
         return this.name.equalsIgnoreCase(item.name) && this.price == item.price;
 
