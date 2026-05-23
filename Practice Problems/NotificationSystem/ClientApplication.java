@@ -3,6 +3,7 @@ package NotificationSystem;
 import NotificationSystem.Model.Notification;
 import NotificationSystem.Model.UserPreference;
 import NotificationSystem.service.NotificationDispatcher;
+import NotificationSystem.service.NotificationService;
 import NotificationSystem.service.UserPreferenceService;
 
 import java.util.Set;
@@ -16,11 +17,14 @@ public class ClientApplication {
         UserPreference userPreference = new UserPreference("user123", Set.of(EMAIL,PUSH));
         UserPreferenceService userPreferenceService  = new UserPreferenceService();
         userPreferenceService.savePreference(userPreference);
-        NotificationDispatcher notificationDispatcher = new NotificationDispatcher(userPreferenceService);
 
         Notification notification = new
                 Notification("user123","Your order otw");
-        NotificationDispatcher.NotificationService service = new NotificationDispatcher.NotificationService( notificationDispatcher);
+
+        NotificationDispatcher notificationDispatcher = new NotificationDispatcher(userPreferenceService);
+
+
+        NotificationService service = new NotificationService(notificationDispatcher);
         NotificationApplication notificationApplication = new NotificationApplication(service);
         notificationApplication.notify(notification);
 

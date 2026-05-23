@@ -25,31 +25,4 @@ public class NotificationDispatcher {
             channel.send(notification);
         }
     }
-
-    public static class NotificationService {
-        private final NotificationDispatcher notificationDispatcher;
-
-        public NotificationService(NotificationDispatcher notificationDispatcher) {
-            this.notificationDispatcher = notificationDispatcher;
-        }
-
-        public void sendNotification(Notification notification){
-            notificationDispatcher.dispatch(notification);
-        }
-    }
-
-    public static class AsyncNotificationService {
-        private final NotificationDispatcher dispatcher;
-        private final ExecutorService executorService;
-
-
-        public AsyncNotificationService(NotificationDispatcher dispatcher, ExecutorService executorService) {
-            this.dispatcher = dispatcher;
-            this.executorService = Executors.newFixedThreadPool(10);
-        }
-
-        public void sendNotification( Notification notification){
-            executorService.submit(() -> dispatcher.dispatch(notification));
-        }
-    }
 }
