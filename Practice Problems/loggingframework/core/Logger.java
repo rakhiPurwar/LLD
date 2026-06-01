@@ -10,7 +10,7 @@ public class Logger {
     private volatile LogLevel logLevel;
     private final List<Appender>appenders;
 
-    public Logger(LogLevel logLevel, String loggerName, List<Appender> appenders) {
+    public Logger(String loggerName,LogLevel logLevel) {
         this.logLevel = logLevel;
         this.loggerName = loggerName;
         //if a thread A is doing any operation on appenders. and thread B tries to append a new appender,so it will cause
@@ -19,7 +19,7 @@ public class Logger {
         this.appenders = new CopyOnWriteArrayList<>();//thread safe //only when writing<reading
     }
 
-    private void setLogLevel(LogLevel level){
+    public void setLogLevel(LogLevel level){
         this.logLevel =   level;
     }
 
@@ -47,5 +47,10 @@ public class Logger {
     public void warn( String message){
         log(logLevel.WARNING,message);
     }
+
+    public void fatal( String message){
+        log(logLevel.FATAL,message);
+    }
+
 
 }

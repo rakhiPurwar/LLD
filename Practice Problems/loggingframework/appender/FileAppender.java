@@ -5,6 +5,7 @@ import loggingframework.core.LogMessage;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -26,12 +27,14 @@ public class FileAppender implements Appender {
     private final Object lock = new Object();
 
 
-    public FileAppender(Formatter formatter, String filePath) {
+    public FileAppender( String filePath,Formatter formatter) {
         this.formatter = formatter;
         try {
             // Opens (or creates) the file at filePath for writing.
             // Paths.get(filePath) converts the string path into a Path object.
             // If file exists it is overwritten (truncated) by default.
+
+            //path of file where to write
             this.writer = Files.newBufferedWriter(Paths.get(filePath));
         } catch (IOException e) {
             // IOException is a checked exception — every caller would have to handle it.
@@ -69,6 +72,7 @@ public class FileAppender implements Appender {
                 // Without flush(): logs stay in RAM buffer and may never reach the file
                 // if the program crashes before the buffer fills up.
                 // flush() has nothing to do with memory release — that is handled by GC separately.
+                //flush costly -> just becuz similicity i have written it here, in real world we can flush after every 10 or 100 log messages, it is a trade off between performance and durability
                 writer.flush();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -86,6 +90,7 @@ public class FileAppender implements Appender {
         // With the same lock:
         //   Thread B cannot enter shutDown() until Thread A releases the lock from append().
         //   They are guaranteed to never overlap.
+        //if we use differemt locks and shutdown mid way, then lock 1 will not be able to compelete append, and shutdown get called
         synchronized (lock){
             try{
                 // Flush explicitly before close — defensive coding.
