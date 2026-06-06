@@ -13,6 +13,7 @@ public class Inventory {
         stock.merge(item, quantity, Integer::sum); // atomic banane ke liye, lambda ke through currentQty ko quantity se add kar diya, agar item pehle se nahi tha to quantity set kar diya
     }
 
+    // check availability getOrDefault check karta hai ki item stock me hai ya nahi, agar nahi hai to default value 0 return karta hai, aur phir check karta hai ki wo 0 se zyada hai ya nahi
     public boolean isItemAvailable(Item item){
         return stock.getOrDefault(item,0)>0;
     }
@@ -20,6 +21,7 @@ public class Inventory {
     public void deductItem(Item item) {
         // compute — atomically reads currentQty, runs lambda, writes result back
         // no other thread can interleave between the read and write
+        //compute method is used to atomically update the quantity of the item in the stock. It reads the current quantity, checks if it's available, and then updates it by deducting one. If the item is out of stock, it throws an exception.
         stock.compute(item, (k, currentQty) -> {
             if (currentQty == null || currentQty <= 0) {
                 throw new IllegalArgumentException("Item out of stock: " + item.getName());
