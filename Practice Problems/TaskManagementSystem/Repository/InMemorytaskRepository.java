@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class InMemoreytaskRepository implements TaskRepository{
+public class InMemorytaskRepository implements TaskRepository{
     private final Map<String,Task> tasks = new ConcurrentHashMap<>();
     @Override
     public void save(Task task) {

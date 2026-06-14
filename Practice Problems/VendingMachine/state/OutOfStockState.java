@@ -4,7 +4,7 @@ import VendingMachine.VendingMachine;
 import VendingMachine.model.Coin;
 import VendingMachine.model.Item;
 
-public class OutOfStockState implements VendingMachineState{
+public class  OutOfStockState implements VendingMachineState{
 
     private static final OutOfStockState INSTANCE = new OutOfStockState();
 

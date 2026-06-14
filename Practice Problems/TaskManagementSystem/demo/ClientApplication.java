@@ -2,7 +2,7 @@ package TaskManagementSystem.demo;
 
 import TaskManagementSystem.Notification.EmailNotifier;
 import TaskManagementSystem.Notification.NotificationService;
-import TaskManagementSystem.Repository.InMemoreytaskRepository;
+import TaskManagementSystem.Repository.InMemorytaskRepository;
 import TaskManagementSystem.Repository.InMemoryUserRepository;
 import TaskManagementSystem.dto.TaskFilter;
 import TaskManagementSystem.enums.Priority;
@@ -20,7 +20,7 @@ public class ClientApplication {
         // For example, we can create a new task, update its status, and then delete it.
 
         // Create notifications service
-        InMemoreytaskRepository taskRepo = new InMemoreytaskRepository();
+        InMemorytaskRepository taskRepo = new InMemorytaskRepository();
         InMemoryUserRepository userRepo = new InMemoryUserRepository() ;
         NotificationService notificationService = new NotificationService();
         notificationService.addObserver(new EmailNotifier());
