@@ -19,7 +19,7 @@ public class FileAppender implements Appender {
 
     // Actual connection to the file on disk.
     // Buffered = writes are held in memory and sent to disk in chunks (faster than char by char).
-    public final BufferedWriter writer;
+    private final BufferedWriter writer;
 
     // Private mutex object. Only one thread can hold this lock at a time.
     // Private so external code cannot accidentally lock on it and cause deadlocks.

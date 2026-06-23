@@ -4,10 +4,9 @@ import loggingframework.core.LogMessage;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.BlockingDeque;
-import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
-
+//decorator pattern adding async behaviour on  top of existing appender
+//wraps file appender and am
 public class AsyncAppender implements Appender{
     private final LinkedBlockingQueue<LogMessage> queue;
     private final Appender appender;

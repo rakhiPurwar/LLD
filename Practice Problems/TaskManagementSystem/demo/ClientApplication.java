@@ -45,8 +45,8 @@ public class ClientApplication {
                 "Develop the RESTful API for the new project", Priority.MEDIUM,
                 LocalDate.now().plusDays(14));
 
-        task1.setAssigneeId(rakhi.getUserId());
-        task2.setAssigneeId(pawan.getUserId());
+        taskService.assignTask(task1.getTaskId(), rakhi.getUserId());
+        taskService.assignTask(task2.getTaskId(), pawan.getUserId());
 
         taskService.updateStatus(task1.getTaskId(),TaskStatus.IN_PROGRESS);
         taskService.updateStatus(task2.getTaskId(),TaskStatus.IN_PROGRESS);

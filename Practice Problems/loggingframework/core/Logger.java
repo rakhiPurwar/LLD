@@ -28,12 +28,12 @@ public class Logger {
     }
 
     public void log(LogLevel level, String message){
-        if(level.getLevel()<this.logLevel.getLevel()){
+        if(level.getLevel()<this.logLevel.getLevel()){//FILTER
             return;
         }
 
-        LogMessage log = new LogMessage(message,level, loggerName);
-        appenders.forEach(appender -> appender.append(log));
+        LogMessage log = new LogMessage(message,level, loggerName);//CREATE
+        appenders.forEach(appender -> appender.append(log));//dispatch
     }
 
     public void debug( String message){

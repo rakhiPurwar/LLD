@@ -13,7 +13,7 @@ public class LoggerManager {
          //bucket level locking
     }
 
-    public static LoggerManager getInstance(){
+    private static LoggerManager getInstance(){
         return INSTANCE;
     }
 
@@ -22,3 +22,13 @@ public class LoggerManager {
         return loggers.computeIfAbsent(name, key-> new Logger(key, LogLevel.INFO));
     }
 }
+
+//LoggerManager is a Singleton registry/cache that gives one Logger object per logger name.
+//Manager gives logger.
+//Map remembers logger.
+//computeIfAbsent creates only if missing.
+
+//Application asks LoggerManager for Logger
+//LoggerManager returns existing/new Logger
+//Logger does filtering and dispatching
+//Appender writes output
