@@ -66,14 +66,15 @@ public class ParkingLotService {
     }
 
 
-
+    //Find → Park → Ticket → Save → Return
     public Ticket parkVehicle(Vehicle vehicle) {
         ParkingSpot spot = findAvailableSpot(vehicle.getVehicleType());
         if(!spot.parkVehicle(vehicle)){
             throw new ParkingException("Unable to park"+ vehicle.getVehicleNumber());
         }
         Ticket ticket = new Ticket(spot);
-        Ticket existing = activeTickets.putIfAbsent(ticket.getTicketId(),ticket);
+
+        Ticket existing = activeTickets.putIfAbsent(ticket.getTicketId(),ticket); //key absent insert value and return null
         if (existing != null) {
             parkVehicle(vehicle); //retry
         }
@@ -82,17 +83,29 @@ public class ParkingLotService {
 
     }
 
+    //Exit Time
+    //   ↓
+    //Calculate Charges
+    //   ↓
+    //Close Ticket
+    //   ↓
+    //Free Spot
+    //   ↓
+    //Remove Active Ticket
+    //   ↓
+    //Return Charges
     public double unparkVehicle(Ticket ticket) {
 
         ticket.setExitTime(java.time.LocalDateTime.now());
         double charges = pricingStrategy.calculateCharges(ticket);
-        ticket.closeTicket(charges);
+        ticket.closeTicket(charges);//charges
         ticket.getSpot().removeVehicle(); //ticket lo usse spot phr remove kro
         activeTickets.remove(ticket.getTicketId());
         return charges;
 
     }
 
+    //iterate in all spots and return 1 which is available
     private ParkingSpot findAvailableSpot(VehicleType vehicleType) {
 //nearest parking spot
         for (ParkingFloor parkingFloor : parkingFloors) {
@@ -104,4 +117,6 @@ public class ParkingLotService {
         }
         throw new ParkingException("No spot available" + vehicleType);
     }
+
+    //Exit → Calculate → Close → Free → Remove → Return
 }

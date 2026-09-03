@@ -15,3 +15,17 @@ public class NotificationApplication {
        notificationService.sendNotification(notification);
     }
 }
+
+//Customer
+//   ↓
+//NotificationApplication
+//   ↓
+//NotificationService
+//   ↓
+//NotificationDispatcher
+//   ↓
+//UserPreferenceService
+//   ↓
+//NotificationChannelFactory
+//   ↓
+//Email/SMS/Push Channel

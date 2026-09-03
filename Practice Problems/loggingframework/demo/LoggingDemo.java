@@ -30,5 +30,11 @@ public class LoggingDemo {
 
         logger.warn("This is an error message");
 
+        Logger logger1 = LoggerManager.getInstance().getLogger(AsyncDemo.class.getName());
+        logger1.addAppender(new ConsoleAppender(new DefaultFormatter()));
+
+        logger1.setLogLevel(LogLevel.INFO);
+        logger1.warn("This is an error message");
+
     }
 }

@@ -30,8 +30,8 @@ public class Demo {
         Publisher espn =  new Publisher("ESPN");
         Publisher techCrunch = new Publisher("TechCrunch");
 
-        espn.publisg("Sport", "Team A won the match!");
-        techCrunch.publisg("Tech", "New smartphone released!");
+        espn.publish("Sport", "Team A won the match!");
+        techCrunch.publish("Tech", "New smartphone released!");
 
 
     }

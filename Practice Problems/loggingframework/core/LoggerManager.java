@@ -13,7 +13,7 @@ public class LoggerManager {
          //bucket level locking
     }
 
-    private static LoggerManager getInstance(){
+    public static LoggerManager getInstance(){
         return INSTANCE;
     }
 

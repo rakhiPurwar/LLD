@@ -1,7 +1,6 @@
 package PubSubApplication.publisher;
 
 import PubSubApplication.core.MessageBroker;
-import PubSubApplication.model.Message;
 
 public class Publisher {
     private final String name;;
@@ -12,7 +11,7 @@ public class Publisher {
         this.broker = MessageBroker.getInstance();
     }
 
-    public void publisg(String topicName, String payload){
+    public void publish(String topicName, String payload){
         System.out.println("Publisher " + name + " is publishing message to topic " + topicName + " with payload: " + payload);
         broker.publish(topicName, payload);
     }

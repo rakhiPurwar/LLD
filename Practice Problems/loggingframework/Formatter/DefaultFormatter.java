@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 public class DefaultFormatter implements Formatter {
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    
 
     @Override
     public String format(LogMessage logMessage) {

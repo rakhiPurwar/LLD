@@ -20,17 +20,16 @@ public class Item {
     }
 
     @Override
-    public boolean equals(Object obj){
-        if(obj == this) return true;//mem location
-        if(obj == null || this.getClass()!=obj.getClass() ) return false;
-        Item item = (Item) obj;
-        return this.name.equalsIgnoreCase(item.name) && this.price == item.price;
-
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return price == item.price && Objects.equals(name, item.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name,price);
+        return Objects.hash(name);
     }
 
     @Override

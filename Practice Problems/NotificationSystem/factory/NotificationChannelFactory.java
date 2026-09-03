@@ -21,4 +21,20 @@ public class NotificationChannelFactory {
         };
     }
 }
-
+//Factory
+//   ↓
+//Creates
+//
+//Email Strategy
+//SMS Strategy
+//Push Strategy
+//
+//NotificationChannel = Strategy Interface
+//
+//Email/SMS/Push = Concrete Strategies
+//
+//NotificationChannelFactory.getChannel() = Factory Method
+//Factory Pattern
+//      +
+//Strategy Pattern
+//

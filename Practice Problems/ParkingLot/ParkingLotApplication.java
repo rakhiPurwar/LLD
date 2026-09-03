@@ -2,7 +2,6 @@ package ParkingLot;
 
 import ParkingLot.Model.Ticket.Ticket;
 import ParkingLot.Model.Vehicle.Vehicle;
-import ParkingLot.Strategy.PricingStrategy;
 import ParkingLot.services.ParkingLotService;
 
 public class ParkingLotApplication {
